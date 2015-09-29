@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using Util.Controls.Bootstrap.Buttons;
 
 namespace Util.Controls.Bootstrap.Services {
     /// <summary>
@@ -17,5 +18,13 @@ namespace Util.Controls.Bootstrap.Services {
         /// HtmlHelper
         /// </summary>
         private readonly HtmlHelper<TEntity> _helper;
+
+        /// <summary>
+        /// 按钮
+        /// </summary>
+        /// <param name="text">按钮文本</param>
+        public IButton Button( string text ) {
+            return BootstrapFactory.CreateButton( text );
+        }
     }
 }

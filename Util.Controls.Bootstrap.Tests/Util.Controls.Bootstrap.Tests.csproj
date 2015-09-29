@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -57,6 +58,10 @@
     <ProjectReference Include="..\Util.Controls.Bootstrap\Util.Controls.Bootstrap.csproj">
       <Project>{28af8935-cd05-41df-961e-c2a5c152ddeb}</Project>
       <Name>Util.Controls.Bootstrap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util.Controls\Util.Controls.csproj">
+      <Project>{fd213bee-7f1e-40eb-ab16-d58a523d97b7}</Project>
+      <Name>Util.Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

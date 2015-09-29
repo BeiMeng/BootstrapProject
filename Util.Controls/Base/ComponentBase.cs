@@ -1,4 +1,5 @@
 ﻿using Util.Controls.Builders.Tags;
+//using Util.Logs;
 
 namespace Util.Controls.Base {
     /// <summary>
@@ -67,6 +68,15 @@ namespace Util.Controls.Base {
         /// <param name="class">class属性值</param>
         public T AddClass( string @class ) {
             Builder.AddClass( @class );
+            return This();
+        }
+
+        /// <summary>
+        /// 添加data-toggle属性值
+        /// </summary>
+        /// <param name="value">属性值</param>
+        public T AddDataToggle( string value ) {
+            Builder.AddDataAttribute( "toggle", value );
             return This();
         }
 
@@ -172,7 +182,33 @@ namespace Util.Controls.Base {
         /// 输出Html
         /// </summary>
         public string ToHtmlString() {
-            return Builder.ToString();
+            var result = Builder.ToString();
+            //WriteLog( result );
+            return result;
+        }
+
+        ///// <summary>
+        ///// 写日志
+        ///// </summary>
+        //private void WriteLog( string result ) {
+        //    var log = GetLog();
+        //    if( !log.IsDebugEnabled )
+        //        return;
+        //    log.Class( this.GetType().FullName ).Content( result ).Debug();
+        //}
+
+        ///// <summary>
+        ///// 获取日志组件
+        ///// </summary>
+        //protected virtual ILog GetLog() {
+        //    return Log.GetLog( Config.ControlTraceLogName );
+        //}
+
+        /// <summary>
+        /// 输出Html
+        /// </summary>
+        public override string ToString() {
+            return ToHtmlString();
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Util.Controls.Bootstrap.Tests.Buttons {
         [TestMethod]
         public void TestDefault() {
             var result = "<button type=\"button\" class=\"btn\" data-toggle=\"button\">a</button>";
-            Assert.AreEqual( result, _control.ToString() );
+            Assert.AreEqual( result, _control.ToHtmlString() );
         }
 
         /// <summary>

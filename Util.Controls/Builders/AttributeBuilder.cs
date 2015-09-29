@@ -137,6 +137,15 @@ namespace Util.Controls.Builders {
         }
 
         /// <summary>
+        /// 添加data-属性
+        /// </summary>
+        /// <param name="name">data属性名，范例toggle,结果为data-toggle</param>
+        /// <param name="value">属性值</param>
+        public void AddDataAttribute( string name, string value ) {
+            Add( string.Format( "data-{0}", name ), value );
+        }
+
+        /// <summary>
         /// 获取结果
         /// </summary>
         public string GetResult() {

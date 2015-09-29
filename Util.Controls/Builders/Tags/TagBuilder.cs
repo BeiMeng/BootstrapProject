@@ -10,19 +10,26 @@ namespace Util.Controls.Builders.Tags {
         /// </summary>
         /// <param name="tagName">标签名称，范例：div</param>
         public TagBuilder( string tagName ) {
-            _attributeBuilder = new AttributeBuilder();
             TagName = tagName;
         }
 
+        private AttributeBuilder _attributeBuilder;
         /// <summary>
         /// 属性生成器
         /// </summary>
-        private readonly AttributeBuilder _attributeBuilder;
+        private AttributeBuilder AttributeBuilder {
+            get { return _attributeBuilder ?? ( _attributeBuilder = new AttributeBuilder() ); }
+        }
 
         /// <summary>
         /// 标签名称
         /// </summary>
-        protected readonly string TagName;
+        protected string TagName { get; private set; }
+
+        /// <summary>
+        /// Html内容
+        /// </summary>
+        protected string InnerHtml { get;private set; }
 
         /// <summary>
         /// 添加属性
@@ -30,7 +37,7 @@ namespace Util.Controls.Builders.Tags {
         /// <param name="name">属性名,范例：class</param>
         /// <param name="value">属性值</param>
         public void AddAttribute( string name, string value ) {
-            _attributeBuilder.Add( name, value );
+            AttributeBuilder.Add( name, value );
         }
 
         /// <summary>
@@ -39,7 +46,7 @@ namespace Util.Controls.Builders.Tags {
         /// <param name="name">属性名,范例：class</param>
         /// <param name="value">属性值</param>
         public void UpdateAttribute( string name, string value ) {
-            _attributeBuilder.Update( name, value );
+            AttributeBuilder.Update( name, value );
         }
 
         /// <summary>
@@ -48,7 +55,7 @@ namespace Util.Controls.Builders.Tags {
         /// <param name="name">style属性名</param>
         /// <param name="value">style属性值</param>
         public void AddStyle( string name, string value ) {
-            _attributeBuilder.AddStyle( name,value );
+            AttributeBuilder.AddStyle( name,value );
         }
 
         /// <summary>
@@ -56,7 +63,24 @@ namespace Util.Controls.Builders.Tags {
         /// </summary>
         /// <param name="class">class属性值</param>
         public void AddClass( string @class ) {
-            _attributeBuilder.AddClass( @class );
+            AttributeBuilder.AddClass( @class );
+        }
+
+        /// <summary>
+        /// 设置标签内部Html
+        /// </summary>
+        /// <param name="html">Html</param>
+        public void SetInnerHtml( string html ) {
+            InnerHtml = html;
+        }
+
+        /// <summary>
+        /// 添加data-属性
+        /// </summary>
+        /// <param name="name">data属性名，范例toggle,结果为data-toggle</param>
+        /// <param name="value">属性值</param>
+        public void AddDataAttribute( string name, string value ) {
+            AttributeBuilder.AddDataAttribute( name, value );
         }
 
         /// <summary>
@@ -88,7 +112,7 @@ namespace Util.Controls.Builders.Tags {
         /// 获取标签选项
         /// </summary>
         protected virtual string GetOptions() {
-            var result = _attributeBuilder.ToString();
+            var result = AttributeBuilder.ToString();
             if( result.IsEmpty() )
                 return string.Empty;
             return string.Format( " {0}", result );
@@ -98,7 +122,7 @@ namespace Util.Controls.Builders.Tags {
         /// 获取标签内部Html
         /// </summary>
         protected virtual string GetInnerHtml() {
-            return string.Empty;
+            return InnerHtml;
         }
 
         /// <summary>
