@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6F9ABC71
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util.Controls.Bootstrap.Tests", "Util.Controls.Bootstrap.Tests\Util.Controls.Bootstrap.Tests.csproj", "{91CB2793-7619-498A-904F-EDFE329507B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootstrapWeb", "BootstrapWeb\BootstrapWeb.csproj", "{05697866-03E9-4A13-9C7B-9CDBDDEDAB2E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{91CB2793-7619-498A-904F-EDFE329507B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91CB2793-7619-498A-904F-EDFE329507B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91CB2793-7619-498A-904F-EDFE329507B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05697866-03E9-4A13-9C7B-9CDBDDEDAB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05697866-03E9-4A13-9C7B-9CDBDDEDAB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05697866-03E9-4A13-9C7B-9CDBDDEDAB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05697866-03E9-4A13-9C7B-9CDBDDEDAB2E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

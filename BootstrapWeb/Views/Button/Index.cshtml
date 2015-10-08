@@ -1,0 +1,17 @@
+﻿@using Util.Controls.Bootstrap
+@using Util.Controls.Bootstrap.Enums
+@{
+    var x = @Html.Bootstrap();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>按钮Demo</title>
+</head>
+<body>
+<div>
+    @x.Button("测试按钮").Large().Style(ButtonStyle.Success)
+</div>
+</body>
+</html>
