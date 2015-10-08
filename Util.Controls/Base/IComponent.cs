@@ -39,16 +39,58 @@ namespace Util.Controls.Base {
         /// <param name="value">属性值</param>
         T AddAttribute( string name, string value );
         /// <summary>
+        /// 修改属性
+        /// </summary>
+        /// <param name="name">属性名,范例：class</param>
+        /// <param name="value">属性值</param>
+        T UpdateAttribute( string name, string value );
+        /// <summary>
         /// 添加样式
         /// </summary>
         /// <param name="name">样式名称</param>
         /// <param name="value">样式值</param>
         T AddStyle( string name, string value );
         /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        /// <param name="isAddQuote">是否为值添加引号</param>
+        T AddDataOption( string name, string value, bool isAddQuote = false );
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        T AddDataOption( string name, bool value );
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        T AddDataOption( string name, bool? value );
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        T AddDataOption( string name, int value );
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        T AddDataOption( string name, int? value );
+        /// <summary>
         /// 添加class属性
         /// </summary>
         /// <param name="class">class属性</param>
-        T AddClass( string @class );
+        T Class( string @class );
+        /// <summary>
+        /// 更新class属性
+        /// </summary>
+        /// <param name="class">class属性</param>
+        T UpdateClass( string @class );
         /// <summary>
         /// 设置外边距
         /// </summary>

@@ -31,14 +31,35 @@ namespace Util.Controls.Builders {
         /// 属性节点分隔符
         /// </summary>
         private readonly string _nodeSeparator;
+        /// <summary>
+        /// data-options属性生成器
+        /// </summary>
+        private AttributeBuilder _dataOptionBuilder;
+
+        /// <summary>
+        /// 获取data-options属性生成器
+        /// </summary>
+        protected AttributeBuilder GetDataOptionBuilder() {
+            return _dataOptionBuilder ?? ( _dataOptionBuilder = new AttributeBuilder( ":", "," ) );
+        }
+
+        /// <summary>
+        /// 获取属性值
+        /// </summary>
+        /// <param name="name">属性名</param>
+        public string Get( string name ) {
+            if ( name.IsEmpty() )
+                return string.Empty;
+            if( !_nodes.ContainsKey( name ) )
+                return string.Empty;
+            return _nodes[name].GetValue();
+        }
 
         /// <summary>
         /// 添加属性
         /// </summary>
         /// <param name="value">属性值</param>
         public void Add( string value ) {
-            if ( value.IsEmpty() )
-                return;
             _nodes.Add( Guid.NewGuid().ToString(),new AttributeListNode(value) );
         }
 
@@ -52,10 +73,11 @@ namespace Util.Controls.Builders {
         public void Add( string name, string value, string separator = ";",string quotes = "\"" ) {
             if ( name.IsEmpty() )
                 return;
-            if ( _nodes.ContainsKey( name ) )
+            if( _nodes.ContainsKey( name ) ) {
                 MergeNode( name, value, separator );
-            else
-                AddNode( name, value, separator, quotes );
+                return;
+            }
+            AddNode( name, value, separator, quotes );
         }
 
         /// <summary>
@@ -143,6 +165,56 @@ namespace Util.Controls.Builders {
         /// <param name="value">属性值</param>
         public void AddDataAttribute( string name, string value ) {
             Add( string.Format( "data-{0}", name ), value );
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        /// <param name="isAddQuote">是否给值添加引号</param>
+        public void AddDataOption( string name, string value, bool isAddQuote = false ) {
+            if ( value.IsEmpty() )
+                return;
+            GetDataOptionBuilder().Update( name, value, "", GetQuotes( isAddQuote ) );
+            Update( "data-options", GetDataOptionBuilder().GetResult() );
+        }
+
+        /// <summary>
+        /// 获取值
+        /// </summary>
+        private string GetQuotes( bool isAddQuote ) {
+            return isAddQuote ? "'" : "";
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public void AddDataOption( string name, bool value ) {
+            AddDataOption( name, value.ToString().ToLower() );
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="option">项</param>
+        public void AddDataOption( string option ) {
+            if ( option.IsEmpty() )
+                return;
+            Add( "data-options", option, "," );
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public void AddDataOption( string name, bool? value ) {
+            if ( value == null )
+                return;
+            AddDataOption( name, value.SafeValue() );
         }
 
         /// <summary>

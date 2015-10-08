@@ -12,7 +12,6 @@ namespace Util.Controls.Base {
         /// <param name="text">按钮文本</param>
         protected ButtonBase( string text ) {
             TagBuilder = new ButtonBuilder();
-            TagBuilder.AddClass( "btn" );
             TagBuilder.SetInnerHtml( text );
         }
 
@@ -26,6 +25,21 @@ namespace Util.Controls.Base {
         /// </summary>
         protected override TagBuilder GetTagBuilder() {
             return TagBuilder;
+        }
+
+        /// <summary>
+        /// 禁用按钮
+        /// </summary>
+        public virtual TButton Disable() {
+            return AddAttribute( "disabled", "disabled" );
+        }
+
+        /// <summary>
+        /// 设置单击事件处理函数
+        /// </summary>
+        /// <param name="handler">事件处理函数或Js代码</param>
+        public virtual TButton Click( string handler ) {
+            return AddAttribute( "onClick", handler );
         }
     }
 }

@@ -13,7 +13,14 @@ namespace Util {
         public static T SafeValue<T>( this T? value ) where T : struct {
             return value ?? default( T );
         }
-
+        /// <summary>
+        /// 获取描述,使用System.ComponentModel.Description特性设置描述
+        /// </summary>
+        /// <param name="instance">枚举实例</param>
+        public static string Description(this Enum instance)
+        {
+            return EnumExtension.GetDescription(instance.GetType(), instance);
+        }
         /// <summary>
         /// 转换为用分隔符拼接的字符串
         /// </summary>

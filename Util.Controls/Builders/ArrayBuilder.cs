@@ -45,13 +45,6 @@ namespace Util.Controls.Builders {
         }
 
         /// <summary>
-        /// 获取方法
-        /// </summary>
-        private string GetMethod() {
-            return string.Format( "{0}({1})", Method, GetArray() );
-        }
-
-        /// <summary>
         /// 获取数组
         /// </summary>
         private string GetArray() {
@@ -60,6 +53,13 @@ namespace Util.Controls.Builders {
             result.Append( _list.Splice() );
             result.Append( "]" );
             return result.ToString();
+        }
+
+        /// <summary>
+        /// 获取方法
+        /// </summary>
+        private string GetMethod() {
+            return string.Format( "{0}({1})", Method, GetArray() );
         }
 
         /// <summary>

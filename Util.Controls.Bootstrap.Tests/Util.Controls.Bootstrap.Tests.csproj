@@ -63,6 +63,10 @@
       <Project>{fd213bee-7f1e-40eb-ab16-d58a523d97b7}</Project>
       <Name>Util.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{539d85af-cfeb-4821-9bc3-75ae8c64722a}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

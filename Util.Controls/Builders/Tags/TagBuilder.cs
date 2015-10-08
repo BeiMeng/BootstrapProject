@@ -67,11 +67,11 @@ namespace Util.Controls.Builders.Tags {
         }
 
         /// <summary>
-        /// 设置标签内部Html
+        /// 更新class属性
         /// </summary>
-        /// <param name="html">Html</param>
-        public void SetInnerHtml( string html ) {
-            InnerHtml = html;
+        /// <param name="class">class属性</param>
+        public void UpdateClass( string @class ) {
+            AttributeBuilder.UpdateClass( @class );
         }
 
         /// <summary>
@@ -84,12 +84,56 @@ namespace Util.Controls.Builders.Tags {
         }
 
         /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        /// <param name="isAddQuote">是否为值添加单引号</param>
+        public void AddDataOption( string name, string value, bool isAddQuote = false ) {
+            AttributeBuilder.AddDataOption( name, value, isAddQuote );
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public void AddDataOption( string name, bool value ) {
+            AttributeBuilder.AddDataOption( name, value );
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public void AddDataOption( string name, bool? value ) {
+            AttributeBuilder.AddDataOption( name, value );
+        }
+
+        /// <summary>
+        /// 设置标签内部Html
+        /// </summary>
+        /// <param name="html">Html</param>
+        public void SetInnerHtml( string html ) {
+            InnerHtml = html;
+        }
+
+        /// <summary>
+        /// 获取属性值
+        /// </summary>
+        /// <param name="name">属性名</param>
+        public string Get( string name ) {
+            return AttributeBuilder.Get( name );
+        }
+
+        /// <summary>
         /// 获取Html结果
         /// </summary>
         public override string ToString() {
             var result = new StringBuilder();
             result.Append( GetBeforeHtml() );
-            result.AppendFormat( GetResult() );
+            result.Append( GetResult() );
             result.Append( GetAfterHtml() );
             return result.ToString();
         }

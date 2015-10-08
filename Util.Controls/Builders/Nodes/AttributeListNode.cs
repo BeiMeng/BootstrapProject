@@ -43,6 +43,13 @@ namespace Util.Controls.Builders.Nodes {
         }
 
         /// <summary>
+        /// 获取属性值
+        /// </summary>
+        public string GetValue() {
+            return GetResult();
+        }
+
+        /// <summary>
         /// 获取结果
         /// </summary>
         public string GetResult() {

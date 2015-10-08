@@ -56,6 +56,7 @@
     <Compile Include="Builders\Tags\ButtonBuilder.cs" />
     <Compile Include="Builders\Tags\InputBuilder.cs" />
     <Compile Include="Builders\Tags\LinkBuilder.cs" />
+    <Compile Include="Builders\Tags\TableBuilder.cs" />
     <Compile Include="Builders\Tags\TagBuilder.cs" />
     <Compile Include="ITextWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

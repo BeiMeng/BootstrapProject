@@ -17,6 +17,10 @@
         /// </summary>
         void Clear();
         /// <summary>
+        /// 获取属性值
+        /// </summary>
+        string GetValue();
+        /// <summary>
         /// 获取结果
         /// </summary>
         string GetResult();

@@ -33,6 +33,21 @@ namespace Util.Controls.Base {
         }
 
         /// <summary>
+        /// 获取属性值
+        /// </summary>
+        /// <param name="name">属性名</param>
+        protected string GetAttributeValue( string name ) {
+            return Builder.Get( name );
+        }
+
+        /// <summary>
+        /// 获取class值
+        /// </summary>
+        protected string GetClass() {
+            return Builder.Get( "class" );
+        }
+
+        /// <summary>
         /// 添加属性
         /// </summary>
         /// <param name="name">属性名,范例：class</param>
@@ -63,20 +78,78 @@ namespace Util.Controls.Base {
         }
 
         /// <summary>
-        /// 添加class属性
-        /// </summary>
-        /// <param name="class">class属性值</param>
-        public T AddClass( string @class ) {
-            Builder.AddClass( @class );
-            return This();
-        }
-
-        /// <summary>
         /// 添加data-toggle属性值
         /// </summary>
         /// <param name="value">属性值</param>
         public T AddDataToggle( string value ) {
             Builder.AddDataAttribute( "toggle", value );
+            return This();
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        /// <param name="isAddQuote">是否为值添加引号</param>
+        public T AddDataOption( string name, string value, bool isAddQuote = false ) {
+            Builder.AddDataOption( name, value, isAddQuote );
+            return This();
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public T AddDataOption( string name, bool value ) {
+            Builder.AddDataOption( name, value );
+            return This();
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public T AddDataOption( string name, bool? value ) {
+            Builder.AddDataOption( name, value );
+            return This();
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public T AddDataOption( string name, int value ) {
+            return AddDataOption( name, value.ToString() );
+        }
+
+        /// <summary>
+        /// 添加data-options属性
+        /// </summary>
+        /// <param name="name">option属性名</param>
+        /// <param name="value">option属性值</param>
+        public T AddDataOption( string name, int? value ) {
+            return AddDataOption( name, value.ToStr() );
+        }
+
+        /// <summary>
+        /// 添加class属性
+        /// </summary>
+        /// <param name="class">class属性值</param>
+        public T Class( string @class ) {
+            Builder.AddClass( @class );
+            return This();
+        }
+
+        /// <summary>
+        /// 更新class属性
+        /// </summary>
+        /// <param name="class">class属性</param>
+        public T UpdateClass( string @class ) {
+            Builder.UpdateClass( @class );
             return This();
         }
 
@@ -182,9 +255,31 @@ namespace Util.Controls.Base {
         /// 输出Html
         /// </summary>
         public string ToHtmlString() {
-            var result = Builder.ToString();
-            //WriteLog( result );
+            RenderBefore();
+            var result = Render();
+            RenderAfter( result );
             return result;
+        }
+
+        /// <summary>
+        /// 渲染前操作
+        /// </summary>
+        protected virtual void RenderBefore() {
+        }
+
+        /// <summary>
+        /// 渲染操作
+        /// </summary>
+        protected virtual string Render() {
+            return Builder.ToString();
+        }
+
+        /// <summary>
+        /// 渲染后操作
+        /// </summary>
+        /// <param name="result">渲染结果</param>
+        protected virtual void RenderAfter( string result ) {
+            //WriteLog( result );
         }
 
         ///// <summary>
